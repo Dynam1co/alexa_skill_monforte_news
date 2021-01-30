@@ -1,12 +1,18 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+import requests
+from facebook_scraper import get_posts
 
 from .models import Greeting
 
 # Create your views here.
 def index(request):
-    # return HttpResponse('Hello from Python!')
-    return render(request, "index.html")
+    text = ''
+
+    for post in get_posts('monfortedelcid', pages=1):
+        text += post['text']
+
+    return HttpResponse('<pre>' + text + '</pre>')
 
 
 def db(request):
