@@ -8,7 +8,7 @@ This project is under GNU license - look at the file [LICENSE.md](LICENSE.md) fo
 
 ## Libraries ☔️
 
-- Facebook-scraper: Scrape Facebook public pages without an API key.[Pypi](https://pypi.org/project/facebook-scraper/).
+- Facebook-scraper: Scrape Facebook public pages without an API key. [Pypi](https://pypi.org/project/facebook-scraper/).
 
 ## Deployment 🚀
 This app is hosted on Heroku using cointinous integration.
