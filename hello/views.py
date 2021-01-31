@@ -6,6 +6,8 @@ from facebook_scraper import get_posts
 from .models import Greeting
 import re
 
+
+# Delete emojis from string
 def deEmojify(string):
     emoji_pattern = re.compile("["
                                u"\U0001F600-\U0001F64F"  # emoticons
@@ -27,27 +29,26 @@ def deEmojify(string):
                                u"\ufe0f"  # dingbats
                                u"\u3030"
                                "]+", flags=re.UNICODE)
+
     return emoji_pattern.sub(r'', string)
 
-
+# Clean text
 def remove_special_char(text) -> str:
-    text = text.replace(r'http\S+', '')
-    text = text.replace(r'www.[^ ]+', '')
-
-    text = text.replace(r'[!"#$%&()*+,-./:;<=>?@[\]^_`{|}~]', '')
-    # text = text.encode('ascii', 'ignore').decode('ascii')
-    text = deEmojify(text)
+    text = re.sub(r'http\S+', '', text, flags=re.MULTILINE)  # Delete urls
+    text = re.sub(r'#\S+', '', text)  # Delete hashtags
+    text = text.replace(r'[!"#$%&()*+,-./:;<=>?@[\]^_`{|}~]', '')  # Delete special chars
+    text = deEmojify(text)  # Delete emojis
 
     return text
 
 # Create your views here.
 def index(request):
-    text = ''
-
-    for post in get_posts('monfortedelcid', pages=1):
-        fb_text = remove_special_char(post['text'])
-
-        text += '<p>' + fb_text + '</p>'
+    try:
+        facebook_posts = get_posts('monfortedelcid', pages=2)        
+    except:
+        text = 'Ha ocurrido un error. Inténtelo de nuevo más tarde.'
+    else:
+        text = [remove_special_char(post['text']) for post in facebook_posts]
 
     return HttpResponse(text)
 
