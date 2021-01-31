@@ -1,3 +1,3 @@
 # Monforte's Alexa Skill
 
- Alexa skill telling the latest news from Monforte.
+ This Alexa skill telling the latest news from Monforte del Cid reading from Facebook. 
