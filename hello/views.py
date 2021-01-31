@@ -35,7 +35,6 @@ def remove_special_char(text) -> str:
     text = text.replace(r'www.[^ ]+', '')
 
     text = text.replace(r'[!"#$%&()*+,-./:;<=>?@[\]^_`{|}~]', '')
-    # text = text.encode('ascii', 'ignore').decode('ascii')
     text = deEmojify(text)
 
     return text
