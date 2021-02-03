@@ -1,9 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-import requests
-from facebook_scraper import get_posts
-
 from .models import Greeting
+from facebook_scraper import get_posts
 import re
 
 
@@ -37,6 +35,9 @@ def remove_special_char(text) -> str:
     text = re.sub(r'http\S+', '', text, flags=re.MULTILINE)  # Delete urls
     text = re.sub(r'#\S+', '', text)  # Delete hashtags
     text = text.replace(r'[!"#$%&()*+,-./:;<=>?@[\]^_`{|}~]', '')  # Delete special chars
+    text = text.replace('·', '')
+    text = text.replace('*', '')
+    text = re.sub(r"#(\w+)", ' ', text, flags=re.MULTILINE) # Delete hashtags an word    
     text = deEmojify(text)  # Delete emojis
 
     return text
