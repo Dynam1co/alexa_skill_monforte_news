@@ -11,7 +11,7 @@ dateparser==1.0.0
 facebook-scraper==0.2.18
 fake-useragent==0.1.11
 idna==2.10
-lxml==4.6.2
+lxml==4.6.3
 parse==1.19.0
 pyee==8.1.0
 pyppeteer==0.2.5
