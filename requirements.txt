@@ -25,6 +25,6 @@ six==1.15.0
 soupsieve==2.1
 tqdm==4.56.0
 tzlocal==2.1
-urllib3==1.26.3
+urllib3==1.26.5
 w3lib==1.22.0
 websockets==8.1
